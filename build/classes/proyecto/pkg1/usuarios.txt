@@ -1,0 +1,8 @@
+usuarios
+@emiliana
+@andres
+@jose
+@ana
+relaciones:
+@emiliana,@andres
+@jose,@ana

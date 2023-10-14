@@ -37,6 +37,8 @@ public class Proyecto1 {
         grafo.cargar_datos("usuarios.txt");
 
         grafo.imprimir_matriz();
+        
+        
     } 
         
         

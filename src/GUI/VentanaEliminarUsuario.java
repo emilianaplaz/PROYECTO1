@@ -30,16 +30,16 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        eliminar_usuario_boton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Eliminar Usuario");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        eliminar_usuario_boton.setText("Eliminar Usuario");
+        eliminar_usuario_boton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                eliminar_usuario_botonActionPerformed(evt);
             }
         });
 
@@ -57,7 +57,7 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
                 .addGap(87, 87, 87))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(132, 132, 132)
-                .addComponent(jButton1)
+                .addComponent(eliminar_usuario_boton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -68,7 +68,7 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(eliminar_usuario_boton)
                 .addGap(66, 66, 66))
         );
 
@@ -86,13 +86,13 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void eliminar_usuario_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_usuario_botonActionPerformed
         // TODO add your handling code here:
         ListaUsuarios usuarios=new ListaUsuarios();
-        String usuario_eliminado=usuario_eliminado.getText();
+        String usuario_eliminado=eliminar_usuario_boton.getText();
         FuncionesListaUsuarios nu = new FuncionesListaUsuarios();
         nu.eliminar_usuario(usuarios,usuario_eliminado);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_eliminar_usuario_botonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,7 +130,7 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton eliminar_usuario_boton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;

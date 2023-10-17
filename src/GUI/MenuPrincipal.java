@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import proyecto.pkg1.FileChooser;
+
 /**
  *
  * @author emilianaplaz
@@ -27,7 +29,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        exit_main_menu = new javax.swing.JButton();
+        exit1 = new javax.swing.JButton();
         escoger_archivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -35,13 +37,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        exit_main_menu.setText("X");
-        exit_main_menu.addActionListener(new java.awt.event.ActionListener() {
+        exit1.setText("X");
+        exit1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit_main_menuActionPerformed(evt);
+                exit1ActionPerformed(evt);
             }
         });
-        jPanel1.add(exit_main_menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, -1, -1));
+        jPanel1.add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
 
         escoger_archivo.setText("Escoger Archivo");
         escoger_archivo.addActionListener(new java.awt.event.ActionListener() {
@@ -56,13 +58,20 @@ public class MenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exit_main_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit_main_menuActionPerformed
+    private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_exit_main_menuActionPerformed
+    }//GEN-LAST:event_exit1ActionPerformed
 
     private void escoger_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escoger_archivoActionPerformed
         // TODO add your handling code here:
+        FileChooser chooser = new FileChooser();
+        chooser.open_file();
+        
+        VentanaFuncionesLista opciones= new VentanaFuncionesLista ();
+        opciones.setVisible(true); 
+        
+        
     }//GEN-LAST:event_escoger_archivoActionPerformed
 
     /**
@@ -102,7 +111,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton escoger_archivo;
-    private javax.swing.JButton exit_main_menu;
+    private javax.swing.JButton exit1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

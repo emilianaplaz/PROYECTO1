@@ -5,14 +5,7 @@
 package proyecto.pkg1;
 
 import GUI.MenuPrincipal;
-import proyecto.pkg1.GrafoMatriz;
-import java.awt.Desktop;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import javax.swing.JFileChooser;
-import javax.swing.filechooser.FileNameExtensionFilter;
+import java.io.IOException;
         
 
 /**
@@ -27,34 +20,22 @@ public class Proyecto1 {
     
     
         
-    public static void main(String[] args) {        
+    public static void main(String[] args) throws IOException {        
         MenuPrincipal menu_principal = new MenuPrincipal ();
         menu_principal.setVisible(true); 
+                        
+        GrafoMatrizAdyacencia matriz = new GrafoMatrizAdyacencia(5);
+       
+        matriz.imprimir_matriz();
         
-        int numVertices = 13;
-        GrafoMatriz grafo = new GrafoMatriz(numVertices);
-
-        grafo.cargar_datos("usuarios.txt");
-
-        grafo.imprimir_matriz();
-        
-        
+        ListaUsuarios lista_usuarios = new ListaUsuarios();
+        FuncionesListaUsuarios crear_lista_usuarios=new FuncionesListaUsuarios();
+        crear_lista_usuarios.escribir_txt(lista_usuarios);
+        crear_lista_usuarios.escribir_txt(lista_usuarios);
     } 
         
         
-        //FuncionesListaUsuarios funciones_usuarios=new FuncionesListaUsuarios();
-        //ListaUsuarios lista_usuarios=new ListaUsuarios();
-        ///lista_usuarios.AgregarFinal("@Amelia");
-        ///lista_usuarios.AgregarFinal("@Carlos");
-        ///lista_usuarios.AgregarFinal("@Ana");
-        //lista_usuarios.AgregarFinal("@Pedro");
-        //funciones_usuarios.escribir_txt(lista_usuarios);
         
-        //ListaUsuarios usuarios2;
-        //usuarios2=funciones_usuarios.leer_txt();
-        ///usuarios2.mostrar_elementos();
-        
-        //System.out.println(OpenFile());
         
         
         

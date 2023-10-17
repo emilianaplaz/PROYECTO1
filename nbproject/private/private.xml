@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/NodoUsuario.java</file>
             <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/FuncionesListaUsuarios.java</file>
             <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/GUI/MenuPrincipal.java</file>
-            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/GrafoMatriz.java</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/GUI/VentanaModificarLista.java</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/FuncionesGrafo.java</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/test/usuarios.txt</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/GUI/VentanaFuncionesLista.java</file>
             <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/ListaUsuarios.java</file>
             <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/Proyecto1.java</file>
-            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/usuarios.txt</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/proyecto/pkg1/FileChooser.java</file>
+            <file>file:/Users/emilianaplaz/Desktop/EDD/Proyecto-1-EDD/Proyecto-1/src/GUI/VentanaAgregarUsuario.java</file>
         </group>
     </open-files>
 </project-private>

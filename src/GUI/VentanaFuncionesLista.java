@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import proyecto.pkg1.MatrizAdyacencia;
+
 /**
  *
  * @author emilianaplaz
@@ -28,7 +30,7 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         modificar_lista = new javax.swing.JButton();
-        actualizar = new javax.swing.JButton();
+        guardar_cambios = new javax.swing.JButton();
         mostrar_grafo = new javax.swing.JButton();
         identificar_componentes = new javax.swing.JButton();
         exit2 = new javax.swing.JButton();
@@ -43,14 +45,19 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
             }
         });
 
-        actualizar.setText("Actualizar");
-        actualizar.addActionListener(new java.awt.event.ActionListener() {
+        guardar_cambios.setText("Guardar cambios");
+        guardar_cambios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizarActionPerformed(evt);
+                guardar_cambiosActionPerformed(evt);
             }
         });
 
         mostrar_grafo.setText("Mostrar Grafo");
+        mostrar_grafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrar_grafoActionPerformed(evt);
+            }
+        });
 
         identificar_componentes.setText("Identificar componentes fuertemente conectados ");
         identificar_componentes.addActionListener(new java.awt.event.ActionListener() {
@@ -81,13 +88,13 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
                             .addComponent(identificar_componentes))
                         .addGap(75, 75, 75))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(modificar_lista)
-                            .addComponent(mostrar_grafo))
-                        .addGap(176, 176, 176))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(actualizar)
-                        .addGap(191, 191, 191))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(guardar_cambios)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(mostrar_grafo)
+                                .addGap(6, 6, 6))
+                            .addComponent(modificar_lista))
+                        .addGap(176, 176, 176))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(atras)
@@ -101,7 +108,7 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
                 .addGap(19, 19, 19)
                 .addComponent(modificar_lista)
                 .addGap(18, 18, 18)
-                .addComponent(actualizar)
+                .addComponent(guardar_cambios)
                 .addGap(18, 18, 18)
                 .addComponent(mostrar_grafo)
                 .addGap(12, 12, 12)
@@ -130,9 +137,11 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
     modificar.setVisible(true);                    
     }//GEN-LAST:event_modificar_listaActionPerformed
 
-    private void actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarActionPerformed
+    private void guardar_cambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_cambiosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_actualizarActionPerformed
+    VentanaGuardarCambios guardar_cambios = new VentanaGuardarCambios ();
+    guardar_cambios.setVisible(true); 
+    }//GEN-LAST:event_guardar_cambiosActionPerformed
 
     private void identificar_componentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificar_componentesActionPerformed
         // TODO add your handling code here:
@@ -142,6 +151,12 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_exit2ActionPerformed
+
+    private void mostrar_grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrar_grafoActionPerformed
+        // TODO add your handling code here:
+        MatrizAdyacencia m = new MatrizAdyacencia();
+        m.crear_matriz();    
+    }//GEN-LAST:event_mostrar_grafoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,9 +194,9 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actualizar;
     private javax.swing.JButton atras;
     private javax.swing.JButton exit2;
+    private javax.swing.JButton guardar_cambios;
     private javax.swing.JButton identificar_componentes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificar_lista;

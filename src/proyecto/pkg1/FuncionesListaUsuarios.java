@@ -5,6 +5,7 @@
 package proyecto.pkg1;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -35,17 +36,22 @@ public class FuncionesListaUsuarios {
             FileWriter fileWriter = new FileWriter("test//usuarios.txt");
             PrintWriter pw = new PrintWriter(fileWriter);
             pw.print(usuarios_actuales); 
-            pw.append("usuarios");
+            pw.append("usuarios:");
             pw.append("\n");
-            pw.append("@emiliana \n");
-            pw.append("@andres \n");
-            pw.append("@jose \n");
-            pw.append("@ana \n");
-            pw.append("\n");
+            pw.append("@emiliana\n");
+            pw.append("@andres\n");
+            pw.append("@jose\n");
+            pw.append("@ana\n");
+            pw.append("@pepe\n");
+            pw.append("@laura\n");
+            pw.append("@miranda\n");
             pw.append("relaciones:");
             pw.append("\n");
-            pw.append("@emiliana,@andres \n");
-            pw.append("@jose,@ana \n");
+            pw.append("@emiliana,@andres\n");
+            pw.append("@jose,@ana\n");
+            pw.append("@pepe,@laura\n");
+            pw.append("@pepe,@miranda\n");
+            pw.append("@jose,@emiliana");
             pw.close();
             
             
@@ -58,7 +64,7 @@ public class FuncionesListaUsuarios {
     
     public void agregar_usuario(ListaUsuarios usuarios, String nuevo_usuario){
         String file = "test//usuarios.txt";
-        String seccion_usuario = "usuarios";
+        String seccion_usuario = "usuarios:";
         String usuario_nuevo = nuevo_usuario;
 
         try {
@@ -86,10 +92,38 @@ public class FuncionesListaUsuarios {
         }
     }
     
-    public void eliminar_usuario(ListaUsuarios usuarios, String nuevo_usuario){
+    public void eliminar_usuario(ListaUsuarios usuarios, String eliminado_usuario){
+        String file = "test//usuarios.txt";
+        String usuario_eliminado = "@"+eliminado_usuario;
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            
+            while((line = br.readLine()) != null) {
+                if(!line.equals(usuario_eliminado)){
+                   sb.append(line).append("\n"); 
+                }
+            }
+            br.close();
+
+
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            pw.print(sb.toString());
+            pw.close();
+            bw.close();
+            fw.close();
+            
+        }catch(Exception err){
         
+        }
     }
-    
+
+            
 
     public ListaUsuarios leer_txt(){
         ListaUsuarios usuarios = new ListaUsuarios();

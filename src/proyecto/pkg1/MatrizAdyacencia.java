@@ -5,9 +5,18 @@
 package proyecto.pkg1;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import javax.swing.JFileChooser;
+//import com.mxgraph.layout.mxCompactTreeLayout;
+//mport com.mxgraph.layout.mxGraphLayout;
+//import com.mxgraph.swing.mxGraphComponent;
+///import com.mxgraph.view.mxGraph;
+import javax.swing.*;
 
 /**
  *
@@ -15,26 +24,27 @@ import java.io.IOException;
  */
 public class MatrizAdyacencia {
     
-    public MatrizAdyacencia () {
+    public static String file;
+    
+    public String selectFile(){
+        JFileChooser fileChooser = new JFileChooser();
+        int result = fileChooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            file= fileChooser.getSelectedFile().getAbsolutePath();
+            
+        }
+        return null;
     }
+
     
-    
-   
+
     public void crear_matriz() {
-        String file = "test//usuarios.txt";
-        
-
-        try {
-            
-            FileReader fr = new FileReader(file);
-            
-
-            // Contar usuarios
-            BufferedReader reader = new BufferedReader(fr);
-
-            String line;
-            int userCount = 0;
-            while ((line = reader.readLine()) != null) {
+            try {
+                FileReader fr = new FileReader(file);
+                BufferedReader reader = new BufferedReader(fr);
+                String line;
+                int userCount = 0;
+                while ((line = reader.readLine()) != null) {
                 if (line.equals("relaciones:")) {
                     break;
                 } else if (line.contains("@")) {
@@ -81,6 +91,7 @@ public class MatrizAdyacencia {
 
             
             //Crear la matriz
+
             int[][] matriz=new int [index][index];
             for (int i =0; i<index;i++){
                 for(int j =0; j<index;j++){
@@ -116,32 +127,107 @@ public class MatrizAdyacencia {
                 System.out.println();
                 
             }
+            reader.close();
+            fr.close();
             
-        reader.close();
- 
-        fr.close();
-            
-            
-        }catch (Exception err) {
-            err.printStackTrace();
+           
+                    
+            } catch (Exception err) {
+                err.printStackTrace();
+            }
+        }
+    
+
+
+    public int getIndex(String[] lista_usuarios, int userCount, String vertex) {
+        for (int i = 0; i < userCount; i++) {
+            if (lista_usuarios[i].equals(vertex)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    
+    public void agregar_usuario(String nuevo_usuario, String usuario1,String usuario2){
+        String usuario_nuevo = "@" + nuevo_usuario;
+        String relacion1 = "@" + usuario1;
+        String relacion2="@" + usuario2;
+        //String file = "test/usuarios.txt";
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                sb.append(line).append("\n");
+                if (line.equals("usuarios:")) {
+                    sb.append(usuario_nuevo).append("\n");
+                }
+                
+                if(line.equals("relaciones:")){
+                    sb.append(relacion1);
+                    sb.append(",");
+                    sb.append(relacion2);
+                    sb.append("\n");
+                }
+            }
+            br.close();
+
+            File temporalFile = new File(file + ".tmp");
+            FileWriter fw = new FileWriter(temporalFile);
+            BufferedWriter writer = new BufferedWriter(fw);
+
+            writer.write(sb.toString());
+
+            writer.close();
+            fw.close();
+
+            File originalFile = new File(file);
+            originalFile.delete();
+            temporalFile.renameTo(originalFile);
+
+
+        } catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
     
-    public int getIndex(String[] lista_usuarios, int userCount, String vertex) {
-    for (int i = 0; i < userCount; i++) {
-        if (lista_usuarios[i].equals(vertex)) {
-            return i;
+        public void eliminar_usuario(MatrizAdyacencia matriz, String eliminado_usuario){
+        String usuario_eliminado = "@"+eliminado_usuario;
+     
+
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+            
+            while((line = br.readLine()) != null) {
+                if(!line.contains(usuario_eliminado)){
+                   sb.append(line).append("\n"); 
+                }
+            }
+            br.close();
+
+
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            pw.print(sb.toString());
+            pw.close();
+            bw.close();
+            fw.close();
+            
+        }catch(Exception err){
+        
         }
     }
-    return -1;
-    }
-   
-   
+
 }
+    
 
-
-
-   
-
-
+        
         

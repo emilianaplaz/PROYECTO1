@@ -1,0 +1,8 @@
+usuarios:
+@julian
+@emiliana
+@andres
+relaciones:
+@julian,@emiliana
+@emiliana,@andres
+

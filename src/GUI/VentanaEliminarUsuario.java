@@ -6,6 +6,7 @@ package GUI;
 
 import proyecto.pkg1.FuncionesListaUsuarios;
 import proyecto.pkg1.ListaUsuarios;
+import proyecto.pkg1.MatrizAdyacencia;
 
 /**
  *
@@ -47,6 +48,11 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
         jLabel1.setText("Ingrese el usuario que desea eliminar");
 
         jButton1.setText("Atras");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -101,12 +107,17 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
 
     private void eliminar_usuario_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_usuario_botonActionPerformed
         // TODO add your handling code here:
-        ListaUsuarios usuarios=new ListaUsuarios();
+        MatrizAdyacencia matriz=new MatrizAdyacencia();
         String elim=usuario_eliminar.getText();
         FuncionesListaUsuarios nu = new FuncionesListaUsuarios();
-        nu.eliminar_usuario(usuarios,elim);
+        nu.eliminar_usuario(matriz,elim);
       
     }//GEN-LAST:event_eliminar_usuario_botonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

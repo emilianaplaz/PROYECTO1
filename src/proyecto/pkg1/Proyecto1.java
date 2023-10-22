@@ -24,16 +24,12 @@ public class Proyecto1 {
         MenuPrincipal menu_principal = new MenuPrincipal ();
         menu_principal.setVisible(true); 
                         
-        //GrafoMatrizAdyacencia matriz = new GrafoMatrizAdyacencia(5);
-       
-        //matriz.imprimir_matriz();
         
         ListaUsuarios lista_usuarios = new ListaUsuarios();
         FuncionesListaUsuarios crear_lista_usuarios=new FuncionesListaUsuarios();
         crear_lista_usuarios.escribir_txt(lista_usuarios);
         
-        
-
+ 
            
  
         

@@ -42,15 +42,15 @@ public class FuncionesListaUsuarios {
             pw.append("@andres\n");
             pw.append("@jose\n");
             pw.append("@ana\n");
-            pw.append("@pepe\n");
+            pw.append("@sofia\n");
             pw.append("@laura\n");
             pw.append("@miranda\n");
             pw.append("relaciones:");
             pw.append("\n");
             pw.append("@emiliana,@andres\n");
             pw.append("@jose,@ana\n");
-            pw.append("@pepe,@laura\n");
-            pw.append("@pepe,@miranda\n");
+            pw.append("@sofia,@laura\n");
+            pw.append("@sofia,@miranda\n");
             pw.append("@jose,@emiliana");
             pw.close();
             
@@ -61,40 +61,10 @@ public class FuncionesListaUsuarios {
         }
     }
     
-    
-    public void agregar_usuario(ListaUsuarios usuarios, String nuevo_usuario){
-        String file = "test//usuarios.txt";
-        String seccion_usuario = "usuarios:";
-        String usuario_nuevo = nuevo_usuario;
 
-        try {
-            FileReader fr = new FileReader(file);
-            BufferedReader br = new BufferedReader(fr);
-            StringBuilder sb = new StringBuilder();
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
-                if (line.equals(seccion_usuario)) {
-                    sb.append("@"+usuario_nuevo).append("\n");
-                }
-            }
-            br.close();
-
-
-            FileWriter fileWriter = new FileWriter(file);
-            PrintWriter printWriter = new PrintWriter(fileWriter);
-            printWriter.print(sb.toString());
-            printWriter.close();
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-    
-    public void eliminar_usuario(ListaUsuarios usuarios, String eliminado_usuario){
-        String file = "test//usuarios.txt";
+    public void eliminar_usuario(MatrizAdyacencia matriz, String eliminado_usuario){
         String usuario_eliminado = "@"+eliminado_usuario;
+        String file="test/usuarios.txt";
 
         try {
             FileReader fr = new FileReader(file);
@@ -103,7 +73,7 @@ public class FuncionesListaUsuarios {
             String line;
             
             while((line = br.readLine()) != null) {
-                if(!line.equals(usuario_eliminado)){
+                if(!line.contains(usuario_eliminado)){
                    sb.append(line).append("\n"); 
                 }
             }

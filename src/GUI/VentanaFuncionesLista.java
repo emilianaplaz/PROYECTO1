@@ -11,12 +11,20 @@ import proyecto.pkg1.MatrizAdyacencia;
  * @author emilianaplaz
  */
 public class VentanaFuncionesLista extends javax.swing.JFrame {
+    
+    public static MenuPrincipal v1;
 
     /**
      * Creates new form VentanaFuncionesLista
      */
-    public VentanaFuncionesLista() {
+    public VentanaFuncionesLista(MenuPrincipal v1) {
         initComponents();
+        this.v1=v1;
+        v1.setVisible(false);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -74,6 +82,11 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
         });
 
         atras.setText("Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,9 +167,14 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
 
     private void mostrar_grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrar_grafoActionPerformed
         // TODO add your handling code here:
-        MatrizAdyacencia m = new MatrizAdyacencia();
-        m.crear_matriz();    
+
+    
     }//GEN-LAST:event_mostrar_grafoActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_atrasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,7 +206,7 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaFuncionesLista().setVisible(true);
+                new VentanaFuncionesLista(v1).setVisible(true);
             }
         });
     }

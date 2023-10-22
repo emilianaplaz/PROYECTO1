@@ -4,7 +4,10 @@
  */
 package GUI;
 
+import java.io.File;
 import proyecto.pkg1.FileChooser;
+import proyecto.pkg1.MatrizAdyacencia;
+
 
 /**
  *
@@ -28,6 +31,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jColorChooser1 = new javax.swing.JColorChooser();
         jPanel1 = new javax.swing.JPanel();
         exit1 = new javax.swing.JButton();
         escoger_archivo = new javax.swing.JButton();
@@ -65,11 +69,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void escoger_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escoger_archivoActionPerformed
         // TODO add your handling code here:
-        FileChooser chooser = new FileChooser();
-        chooser.open_file();
         
-        VentanaFuncionesLista opciones= new VentanaFuncionesLista ();
-        opciones.setVisible(true); 
+        MatrizAdyacencia matriz = new MatrizAdyacencia();
+        matriz.selectFile();
+        matriz.crear_matriz();
+        VentanaFuncionesLista opciones= new VentanaFuncionesLista (this);
         
         
     }//GEN-LAST:event_escoger_archivoActionPerformed
@@ -112,6 +116,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton escoger_archivo;
     private javax.swing.JButton exit1;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

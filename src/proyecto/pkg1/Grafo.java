@@ -74,7 +74,7 @@ public class Grafo {
             
             contentPane.add(cerrar, BorderLayout.SOUTH); 
 
-            // Set the frame properties
+            // Propiedades del frame
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(400, 320);
             frame.setVisible(true);

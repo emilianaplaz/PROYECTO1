@@ -9,12 +9,16 @@ package GUI;
  * @author emilianaplaz
  */
 public class VentanaModificarLista extends javax.swing.JFrame {
-
+    public static VentanaFuncionesLista v2;
     /**
      * Creates new form VentanaModificarLista
      */
-    public VentanaModificarLista() {
+    public VentanaModificarLista(VentanaFuncionesLista v2) {
+        this.v2=v2;
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+  
     }
 
     /**
@@ -28,73 +32,124 @@ public class VentanaModificarLista extends javax.swing.JFrame {
 
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        atras = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        btn_agg_usuario = new javax.swing.JButton();
+        btn_eliminar_us = new javax.swing.JButton();
+        btn_agg_rel = new javax.swing.JButton();
+        btn_elim_rel = new javax.swing.JButton();
 
         jButton3.setText("jButton3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Agregar Usuario");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        atras.setBackground(new java.awt.Color(0, 51, 102));
+        atras.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        atras.setText("<Atrás");
+        atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                atrasActionPerformed(evt);
             }
         });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
 
-        jButton2.setText("Eliminar Usuario");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btn_agg_usuario.setBackground(new java.awt.Color(0, 51, 102));
+        btn_agg_usuario.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        btn_agg_usuario.setText("Agregar Usuario");
+        btn_agg_usuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_agg_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btn_agg_usuarioActionPerformed(evt);
             }
         });
+        jPanel2.add(btn_agg_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 220, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(139, 139, 139)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap(137, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
-                .addComponent(jButton1)
-                .addGap(30, 30, 30)
-                .addComponent(jButton2)
-                .addContainerGap(136, Short.MAX_VALUE))
-        );
+        btn_eliminar_us.setBackground(new java.awt.Color(0, 51, 102));
+        btn_eliminar_us.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        btn_eliminar_us.setText("Eliminar Usuario");
+        btn_eliminar_us.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_eliminar_us.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminar_usActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_eliminar_us, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 220, -1));
+
+        btn_agg_rel.setBackground(new java.awt.Color(0, 51, 102));
+        btn_agg_rel.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        btn_agg_rel.setText("Agregar Relación");
+        btn_agg_rel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_agg_rel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_agg_relActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_agg_rel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 220, -1));
+
+        btn_elim_rel.setBackground(new java.awt.Color(0, 51, 102));
+        btn_elim_rel.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        btn_elim_rel.setText("Eliminar relación");
+        btn_elim_rel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btn_elim_rel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_elim_relActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn_elim_rel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 220, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 240, 250));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_agg_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agg_usuarioActionPerformed
         // TODO add your handling code here:
-        VentanaAgregarUsuario agregar_usuario= new VentanaAgregarUsuario ();
+        VentanaAgregarUsuario agregar_usuario= new VentanaAgregarUsuario (this);
         agregar_usuario.setVisible(true); 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_agg_usuarioActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btn_eliminar_usActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminar_usActionPerformed
         // TODO add your handling code here:
-        VentanaEliminarUsuario eliminar_usuario= new VentanaEliminarUsuario ();
+        VentanaEliminarUsuario eliminar_usuario= new VentanaEliminarUsuario (this);
         eliminar_usuario.setVisible(true);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn_eliminar_usActionPerformed
+
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        v2.setVisible(true);
+        
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void btn_agg_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agg_relActionPerformed
+        // TODO add your handling code here:
+        VentanaAgregarConexion conexion = new VentanaAgregarConexion(this);
+        conexion.setVisible(true);
+    }//GEN-LAST:event_btn_agg_relActionPerformed
+
+    private void btn_elim_relActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_elim_relActionPerformed
+        // TODO add your handling code here:
+        VentanaEliminarConexion elim_conexion = new VentanaEliminarConexion(this);
+        elim_conexion.setVisible(true);
+    }//GEN-LAST:event_btn_elim_relActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,15 +181,19 @@ public class VentanaModificarLista extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaModificarLista().setVisible(true);
+                new VentanaModificarLista(v2).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton atras;
+    private javax.swing.JButton btn_agg_rel;
+    private javax.swing.JButton btn_agg_usuario;
+    private javax.swing.JButton btn_elim_rel;
+    private javax.swing.JButton btn_eliminar_us;
     private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

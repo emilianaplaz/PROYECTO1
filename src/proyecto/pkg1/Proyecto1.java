@@ -18,33 +18,13 @@ public class Proyecto1 {
      * @param args the command line arguments
      */
     
-    
-        
+
     public static void main(String[] args) throws IOException {        
         MenuPrincipal menu_principal = new MenuPrincipal ();
         menu_principal.setVisible(true); 
-                        
-        
-        ListaUsuarios lista_usuarios = new ListaUsuarios();
-        FuncionesListaUsuarios crear_lista_usuarios=new FuncionesListaUsuarios();
-        crear_lista_usuarios.escribir_txt(lista_usuarios);
-        
- 
-           
- 
-        
-        
-        //GrafoMatrizAdyacencia gf = new GrafoMatrizAdyacencia();
-        //gf.crearMatrix();
-        
-        
-    } 
-        
-        
-        
-        
-        
-        
+
+        } 
+
     }
     
 

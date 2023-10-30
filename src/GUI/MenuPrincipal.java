@@ -5,7 +5,6 @@
 package GUI;
 
 import java.io.File;
-import proyecto.pkg1.FileChooser;
 import proyecto.pkg1.MatrizAdyacencia;
 
 
@@ -20,6 +19,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
      */
     public MenuPrincipal() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
     }
 
     /**
@@ -33,49 +34,55 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jColorChooser1 = new javax.swing.JColorChooser();
         jPanel1 = new javax.swing.JPanel();
-        exit1 = new javax.swing.JButton();
+        lbl1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        lbl2 = new javax.swing.JLabel();
         escoger_archivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(201, 228, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        exit1.setText("X");
-        exit1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(exit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+        lbl1.setFont(new java.awt.Font("Kohinoor Bangla", 1, 24)); // NOI18N
+        lbl1.setForeground(new java.awt.Color(0, 51, 102));
+        lbl1.setText("BIENVENIDO!");
+        jPanel1.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 170, -1));
 
-        escoger_archivo.setText("Escoger Archivo");
+        jPanel2.setBackground(new java.awt.Color(221, 238, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl2.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        lbl2.setText("Seleccione un archivo de texto para comenzar el programa");
+        jPanel2.add(lbl2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 420, 60));
+
+        escoger_archivo.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        escoger_archivo.setText("Escoger archivo");
+        escoger_archivo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         escoger_archivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 escoger_archivoActionPerformed(evt);
             }
         });
-        jPanel1.add(escoger_archivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 250, -1, -1));
+        jPanel1.add(escoger_archivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void exit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_exit1ActionPerformed
-
     private void escoger_archivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escoger_archivoActionPerformed
         // TODO add your handling code here:
-        
         MatrizAdyacencia matriz = new MatrizAdyacencia();
         matriz.selectFile();
         matriz.crear_matriz();
         VentanaFuncionesLista opciones= new VentanaFuncionesLista (this);
-        
-        
+        opciones.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_escoger_archivoActionPerformed
 
     /**
@@ -115,8 +122,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton escoger_archivo;
-    private javax.swing.JButton exit1;
     private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl1;
+    private javax.swing.JLabel lbl2;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,8 +4,7 @@
  */
 package GUI;
 
-import proyecto.pkg1.FuncionesListaUsuarios;
-import proyecto.pkg1.ListaUsuarios;
+import proyecto.pkg1.FuncionesGrafo;
 import proyecto.pkg1.MatrizAdyacencia;
 
 /**
@@ -13,12 +12,15 @@ import proyecto.pkg1.MatrizAdyacencia;
  * @author emilianaplaz
  */
 public class VentanaEliminarUsuario extends javax.swing.JFrame {
-
+    public static VentanaModificarLista v3;
     /**
      * Creates new form VentanaEliminarUsuario
      */
-    public VentanaEliminarUsuario() {
+    public VentanaEliminarUsuario(VentanaModificarLista v3) {
+        this.v3=v3;
         initComponents();
+        this.setLocationRelativeTo(null);
+        lbl_usuario_elim.setVisible(false);
     }
 
     /**
@@ -30,92 +32,122 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lbl_usuario_agg = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        eliminar_usuario_boton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        eliminar_usuario = new javax.swing.JButton();
+        lbl_ingrese_usuario_elim = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        usuario_eliminar = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_usuario_elim = new javax.swing.JLabel();
+        usuario_eliminar = new javax.swing.JComboBox<>();
+
+        lbl_usuario_agg.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_usuario_agg.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        lbl_usuario_agg.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_usuario_agg.setText("Usuario Agregado!");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        eliminar_usuario_boton.setText("Eliminar Usuario");
-        eliminar_usuario_boton.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        eliminar_usuario.setBackground(new java.awt.Color(0, 51, 102));
+        eliminar_usuario.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        eliminar_usuario.setText("Eliminar ");
+        eliminar_usuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        eliminar_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminar_usuario_botonActionPerformed(evt);
+                eliminar_usuarioActionPerformed(evt);
             }
         });
+        jPanel1.add(eliminar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 250, -1));
 
-        jLabel1.setText("Ingrese el usuario que desea eliminar");
+        lbl_ingrese_usuario_elim.setFont(new java.awt.Font("Kohinoor Bangla", 1, 18)); // NOI18N
+        lbl_ingrese_usuario_elim.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_ingrese_usuario_elim.setText("Ingrese el usuario que desea eliminar");
+        jPanel1.add(lbl_ingrese_usuario_elim, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        jButton1.setText("Atras");
+        jButton1.setBackground(new java.awt.Color(0, 51, 102));
+        jButton1.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        jButton1.setText("<Atrás");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 60, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(87, 87, 87))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(eliminar_usuario_boton)
-                        .addGap(132, 132, 132))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(usuario_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+
+        lbl_usuario_elim.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_usuario_elim.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        lbl_usuario_elim.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_usuario_elim.setText("Usuario Eliminado!");
+
+        usuario_eliminar.setFont(new java.awt.Font("Kohinoor Bangla", 0, 14)); // NOI18N
+        usuario_eliminar.setModel(new javax.swing.DefaultComboBoxModel(MatrizAdyacencia.getUsuarios()));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(86, 86, 86)
+                        .addComponent(lbl_usuario_elim))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(usuario_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel1)
-                .addGap(35, 35, 35)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(48, Short.MAX_VALUE)
                 .addComponent(usuario_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(eliminar_usuario_boton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(19, 19, 19))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbl_usuario_elim)
+                .addGap(53, 53, 53))
         );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 350, 160));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void eliminar_usuario_botonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_usuario_botonActionPerformed
+    private void eliminar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_usuarioActionPerformed
         // TODO add your handling code here:
         MatrizAdyacencia matriz=new MatrizAdyacencia();
-        String elim=usuario_eliminar.getText();
-        FuncionesListaUsuarios nu = new FuncionesListaUsuarios();
-        nu.eliminar_usuario(matriz,elim);
+        matriz.crear_matriz();
+        String usuario_eliminado=usuario_eliminar.getSelectedItem().toString();
+        FuncionesGrafo fu = new FuncionesGrafo();
+        fu.eliminar_usuario(usuario_eliminado);
+        eliminar_usuario.setVisible(false);
+        usuario_eliminar.setVisible(false);
+        lbl_ingrese_usuario_elim.setVisible(false);
+        lbl_usuario_elim.setVisible(true);
+        
       
-    }//GEN-LAST:event_eliminar_usuario_botonActionPerformed
+    }//GEN-LAST:event_eliminar_usuarioActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        v3.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -149,16 +181,19 @@ public class VentanaEliminarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaEliminarUsuario().setVisible(true);
+                new VentanaEliminarUsuario(v3).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton eliminar_usuario_boton;
+    private javax.swing.JButton eliminar_usuario;
     private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField usuario_eliminar;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_ingrese_usuario_elim;
+    private javax.swing.JLabel lbl_usuario_agg;
+    private javax.swing.JLabel lbl_usuario_elim;
+    private javax.swing.JComboBox<String> usuario_eliminar;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,4 +1,6 @@
-usuarios:
+usuarios
+@clara
+@juana
 @emiliana
 @andres
 @jose
@@ -6,7 +8,11 @@ usuarios:
 @sofia
 @laura
 @miranda
-relaciones:
+relaciones
+@andres,@jose
+@miranda,@sofia
+@ana,@laura
+@laura,@sofia
 @emiliana,@andres
 @jose,@ana
 @sofia,@laura

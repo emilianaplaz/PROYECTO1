@@ -4,10 +4,9 @@
  */
 package GUI;
 
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import proyecto.pkg1.FuncionesListaUsuarios;
-import proyecto.pkg1.ListaUsuarios;
+import javax.swing.JOptionPane;
+import proyecto.pkg1.FuncionesGrafo;
+import static proyecto.pkg1.FuncionesGrafo.usuarioExistente;
 import proyecto.pkg1.MatrizAdyacencia;
 
 
@@ -16,12 +15,17 @@ import proyecto.pkg1.MatrizAdyacencia;
  * @author emilianaplaz
  */
 public class VentanaAgregarUsuario extends javax.swing.JFrame {
+    public static VentanaModificarLista v3;
 
     /**
      * Creates new form VentanaAgregarUsuario
      */
-    public VentanaAgregarUsuario() {
+    public VentanaAgregarUsuario(VentanaModificarLista v3) {
+        this.v3=v3;       
         initComponents();
+        this.setLocationRelativeTo(null);
+        lbl_usuario_agg.setVisible(false);
+        
     }
 
     /**
@@ -34,118 +38,162 @@ public class VentanaAgregarUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
+        lbl_usuario_elim = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         agregar_usuario = new javax.swing.JButton();
         entry_usuario_nuevo = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        entry_nueva_relacion_1 = new javax.swing.JTextField();
-        entry_nueva_relacion_2 = new javax.swing.JTextField();
+        lbl_ingrese_usuario = new javax.swing.JLabel();
+        atras = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        lbl_usuario_agg = new javax.swing.JLabel();
 
         jCheckBox1.setText("jCheckBox1");
 
+        lbl_usuario_elim.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_usuario_elim.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        lbl_usuario_elim.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_usuario_elim.setText("Usuario Eliminado!");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        agregar_usuario.setBackground(new java.awt.Color(0, 51, 102));
+        agregar_usuario.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
         agregar_usuario.setText("Agregar");
+        agregar_usuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         agregar_usuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregar_usuarioActionPerformed(evt);
             }
         });
+        jPanel1.add(agregar_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 250, -1));
 
-        jLabel1.setText("Ingrese el nombre del usuario");
-
-        jButton1.setText("Atras");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        entry_usuario_nuevo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        entry_usuario_nuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                entry_usuario_nuevoActionPerformed(evt);
             }
         });
+        jPanel1.add(entry_usuario_nuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 250, -1));
 
-        jLabel2.setText("Ingrese un usuario con el que se relaciona, en el orden que es");
+        lbl_ingrese_usuario.setFont(new java.awt.Font("Kohinoor Bangla", 1, 18)); // NOI18N
+        lbl_ingrese_usuario.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_ingrese_usuario.setText("Ingrese el usuario que desea agregar");
+        jPanel1.add(lbl_ingrese_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(112, 112, 112))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jButton1)
-                        .addGap(78, 78, 78)
-                        .addComponent(agregar_usuario))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(entry_usuario_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(entry_nueva_relacion_1, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
-                            .addComponent(entry_nueva_relacion_2))))
-                .addContainerGap(45, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(entry_usuario_nuevo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(entry_nueva_relacion_1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(entry_nueva_relacion_2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(16, 16, 16))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(agregar_usuario)
-                        .addGap(36, 36, 36))))
-        );
+        atras.setBackground(new java.awt.Color(0, 51, 102));
+        atras.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        atras.setText("<Atrás");
+        atras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                atrasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 60, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lbl_usuario_agg.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_usuario_agg.setFont(new java.awt.Font("Kohinoor Bangla", 1, 18)); // NOI18N
+        lbl_usuario_agg.setForeground(new java.awt.Color(0, 51, 102));
+        lbl_usuario_agg.setText("Usuario agregado!");
+        jPanel2.add(lbl_usuario_agg, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 69, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 340, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregar_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregar_usuarioActionPerformed
-        // TODO add your handling code here:
-        MatrizAdyacencia matriz=new MatrizAdyacencia();
-        String nuevo_usuario=entry_usuario_nuevo.getText();
-        String relacion1=entry_nueva_relacion_1.getText();
-        String relacion2=entry_nueva_relacion_2.getText();
-        matriz.agregar_usuario(nuevo_usuario, relacion1, relacion2);
+        // TODO add your handling code here:       
+        String nuevo_usuario = entry_usuario_nuevo.getText();
+        
+        //Validación
+        //Caso 1: input vacio
+        if (entry_usuario_nuevo.getText().equals("")){
+            JOptionPane.showMessageDialog(this,"Ingrese un usuario");
+        }else {
+            boolean isAlphanumeric = true;
+            
+            for (int i = 0; i < nuevo_usuario.length(); i++) {
+                if (!Character.isLetterOrDigit(nuevo_usuario.charAt(i))) {
+                    isAlphanumeric = false;
+                    break;
+                }
+            }
+            
+        if (!isAlphanumeric) {
+            JOptionPane.showMessageDialog(this, "El usuario sólo debe contener letras y/o números");
+        } else {
+            MatrizAdyacencia matriz = new MatrizAdyacencia();
+            FuncionesGrafo fu = new FuncionesGrafo();
+            fu.agregar_usuario(nuevo_usuario);
+
+            //Caso 2: usuario existente
+            if (usuarioExistente) {
+                JOptionPane.showMessageDialog(this, "Este usuario ya existe");
+            //Caso 3: usuario válido
+            } else {
+                agregar_usuario.setVisible(false);
+                entry_usuario_nuevo.setVisible(false);
+                lbl_ingrese_usuario.setVisible(false);
+                lbl_usuario_agg.setVisible(true);
+            }
+        }
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    
+        
+ 
+        
+       
+        
+       
+        
+        
+        
+        
+        
+        
         
        
         
     }//GEN-LAST:event_agregar_usuarioActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
+        v3.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_atrasActionPerformed
+
+    private void entry_usuario_nuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entry_usuario_nuevoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_entry_usuario_nuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,20 +225,20 @@ public class VentanaAgregarUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaAgregarUsuario().setVisible(true);
+                new VentanaAgregarUsuario(v3).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregar_usuario;
-    private javax.swing.JTextField entry_nueva_relacion_1;
-    private javax.swing.JTextField entry_nueva_relacion_2;
+    private javax.swing.JButton atras;
     private javax.swing.JTextField entry_usuario_nuevo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl_ingrese_usuario;
+    private javax.swing.JLabel lbl_usuario_agg;
+    private javax.swing.JLabel lbl_usuario_elim;
     // End of variables declaration//GEN-END:variables
 }

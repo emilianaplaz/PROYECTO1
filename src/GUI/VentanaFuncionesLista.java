@@ -4,6 +4,8 @@
  */
 package GUI;
 
+import proyecto.pkg1.ComponentesConectados;
+import proyecto.pkg1.Grafo;
 import proyecto.pkg1.MatrizAdyacencia;
 
 /**
@@ -18,11 +20,11 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
      * Creates new form VentanaFuncionesLista
      */
     public VentanaFuncionesLista(MenuPrincipal v1) {
-        initComponents();
         this.v1=v1;
-        v1.setVisible(false);
-        this.setVisible(true);
+        initComponents();
         this.setLocationRelativeTo(null);
+        
+        
         
         
     }
@@ -36,137 +38,116 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        modificar_lista = new javax.swing.JButton();
-        guardar_cambios = new javax.swing.JButton();
-        mostrar_grafo = new javax.swing.JButton();
-        identificar_componentes = new javax.swing.JButton();
-        exit2 = new javax.swing.JButton();
         atras = new javax.swing.JButton();
+        lbl1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        identificar_componentes = new javax.swing.JButton();
+        mostrar_grafo = new javax.swing.JButton();
+        modificar_lista = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        modificar_lista.setText("Modificar Lista");
-        modificar_lista.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificar_listaActionPerformed(evt);
-            }
-        });
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        guardar_cambios.setText("Guardar cambios");
-        guardar_cambios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                guardar_cambiosActionPerformed(evt);
-            }
-        });
-
-        mostrar_grafo.setText("Mostrar Grafo");
-        mostrar_grafo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrar_grafoActionPerformed(evt);
-            }
-        });
-
-        identificar_componentes.setText("Identificar componentes fuertemente conectados ");
-        identificar_componentes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                identificar_componentesActionPerformed(evt);
-            }
-        });
-
-        exit2.setText("x");
-        exit2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exit2ActionPerformed(evt);
-            }
-        });
-
-        atras.setText("Atrás");
+        atras.setBackground(new java.awt.Color(0, 51, 102));
+        atras.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        atras.setText("< Atrás");
+        atras.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         atras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atrasActionPerformed(evt);
             }
         });
+        jPanel1.add(atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 60, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(92, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(exit2)
-                            .addComponent(identificar_componentes))
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(guardar_cambios)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(mostrar_grafo)
-                                .addGap(6, 6, 6))
-                            .addComponent(modificar_lista))
-                        .addGap(176, 176, 176))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(atras)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(exit2)
-                .addGap(19, 19, 19)
-                .addComponent(modificar_lista)
-                .addGap(18, 18, 18)
-                .addComponent(guardar_cambios)
-                .addGap(18, 18, 18)
-                .addComponent(mostrar_grafo)
-                .addGap(12, 12, 12)
-                .addComponent(identificar_componentes)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                .addComponent(atras)
-                .addGap(16, 16, 16))
-        );
+        lbl1.setBackground(new java.awt.Color(216, 235, 255));
+        lbl1.setFont(new java.awt.Font("Kohinoor Bangla", 1, 24)); // NOI18N
+        lbl1.setForeground(new java.awt.Color(0, 51, 102));
+        lbl1.setText("FUNCIONES");
+        jPanel1.add(lbl1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 30, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 51, 102), 1, true));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        identificar_componentes.setBackground(new java.awt.Color(0, 51, 102));
+        identificar_componentes.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        identificar_componentes.setText("Componentes fuertemente conectados ");
+        identificar_componentes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        identificar_componentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                identificar_componentesActionPerformed(evt);
+            }
+        });
+        jPanel2.add(identificar_componentes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 300, -1));
+
+        mostrar_grafo.setBackground(new java.awt.Color(0, 51, 102));
+        mostrar_grafo.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        mostrar_grafo.setText("Mostrar Grafo");
+        mostrar_grafo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        mostrar_grafo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrar_grafoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(mostrar_grafo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 300, -1));
+
+        modificar_lista.setBackground(new java.awt.Color(0, 51, 102));
+        modificar_lista.setFont(new java.awt.Font("Kohinoor Bangla", 1, 14)); // NOI18N
+        modificar_lista.setText("Modificar Lista");
+        modificar_lista.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        modificar_lista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificar_listaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(modificar_lista, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 300, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 360, 270));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 417, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void modificar_listaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificar_listaActionPerformed
-    VentanaModificarLista modificar = new VentanaModificarLista ();
-    modificar.setVisible(true);                    
+    VentanaModificarLista modificar = new VentanaModificarLista (this);
+    modificar.setVisible(true);
+    this.setVisible(false);
     }//GEN-LAST:event_modificar_listaActionPerformed
-
-    private void guardar_cambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_cambiosActionPerformed
-        // TODO add your handling code here:
-    VentanaGuardarCambios guardar_cambios = new VentanaGuardarCambios ();
-    guardar_cambios.setVisible(true); 
-    }//GEN-LAST:event_guardar_cambiosActionPerformed
 
     private void identificar_componentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_identificar_componentesActionPerformed
         // TODO add your handling code here:
+        MatrizAdyacencia matriz = new MatrizAdyacencia();
+        Grafo grafo = new Grafo();
+        ComponentesConectados comp = new ComponentesConectados();
+        matriz.crear_matriz();
+        grafo.crear_grafo();
+        comp.display();
+        
+        
     }//GEN-LAST:event_identificar_componentesActionPerformed
-
-    private void exit2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exit2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_exit2ActionPerformed
 
     private void mostrar_grafoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrar_grafoActionPerformed
         // TODO add your handling code here:
+        MatrizAdyacencia matriz = new MatrizAdyacencia();
+        Grafo grafo = new Grafo();
+        matriz.crear_matriz();
+        grafo.crear_grafo();
 
     
     }//GEN-LAST:event_mostrar_grafoActionPerformed
@@ -174,6 +155,7 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
     private void atrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_atrasActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        v1.setVisible(true);
     }//GEN-LAST:event_atrasActionPerformed
 
     /**
@@ -213,10 +195,11 @@ public class VentanaFuncionesLista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton atras;
-    private javax.swing.JButton exit2;
-    private javax.swing.JButton guardar_cambios;
     private javax.swing.JButton identificar_componentes;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lbl1;
     private javax.swing.JButton modificar_lista;
     private javax.swing.JButton mostrar_grafo;
     // End of variables declaration//GEN-END:variables

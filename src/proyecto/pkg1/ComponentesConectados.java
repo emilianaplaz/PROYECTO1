@@ -4,8 +4,12 @@
  */
 package proyecto.pkg1;
 
+import com.mxgraph.layout.mxCircleLayout;
+import com.mxgraph.layout.mxGraphLayout;
+import com.mxgraph.swing.mxGraphComponent;
 import com.mxgraph.util.mxConstants;
 import java.awt.Container;
+import java.awt.Dimension;
 import javax.swing.JFrame;
 import static proyecto.pkg1.Grafo.grafo;
 import static proyecto.pkg1.MatrizAdyacencia.matriz;
@@ -18,7 +22,7 @@ import static proyecto.pkg1.MatrizAdyacencia.matriz;
 public class ComponentesConectados {
 
     public int[][] conseguirComponentes() {
-     int n = matriz.length;
+        int n = matriz.length;
         boolean[] visitado = new boolean[n];
         int[] orden = new int[n];
         int index = 0;
@@ -64,76 +68,80 @@ public class ComponentesConectados {
 
     private int[][] getTranspuesta() {
         int n = matriz.length;
-        int[][] transposedMatriz = new int[n][n];
+        int[][] matrizTranspuesta = new int[n][n];
 
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < n; j++) {
-                transposedMatriz[j][i] = matriz[i][j];
+                matrizTranspuesta[j][i] = matriz[i][j];
             }
         }
 
-        return transposedMatriz;
+        return matrizTranspuesta;
     }
 
     private int dfs(int[][] grafo, int v, boolean[] visitado, int[][] componentesConectados) {
         visitado[v] = true;
 
-        int componentSize = 1;
-        componentesConectados[v] = new int[componentSize];
+        int size = 1;
+        componentesConectados[v] = new int[size];
 
-        for (int neighbor = 0; neighbor < grafo.length; neighbor++) {
-            if (grafo[v][neighbor] == 1 && !visitado[neighbor]) {
-                componentSize += dfs(grafo, neighbor, visitado, componentesConectados);
+        for (int vecino = 0; vecino < grafo.length; vecino++) {
+            if (grafo[v][vecino] == 1 && !visitado[vecino]) {
+                size += dfs(grafo, vecino, visitado, componentesConectados);
             }
         }
 
-        componentesConectados[v] = new int[componentSize];
-        return componentSize;
+        componentesConectados[v] = new int[size];
+        return size;
     }
 
     public void display() {
         int[][] componentes = conseguirComponentes();
         int componentCount = componentes.length;
 
-        // Generate colors
+        // Generar colores
         String[] colores = generarColores(componentCount);
 
         Object parent = grafo.getDefaultParent();
-        JFrame frame = new JFrame("Componentes fuertemente conectados");
-        Container contentPane = frame.getContentPane();
+        mxGraphLayout layout = new mxCircleLayout(grafo);
+        layout.execute(parent);
 
         grafo.getModel().beginUpdate();
         try {
-            // Create cells for each component and assign a color
+            // Crear celdas para cada componente y darle un color
             for (int i = 0; i < componentCount; i++) {
                 int[] component = componentes[i];
                 int vertexCount = component.length;
 
                 for (int j = 0; j < vertexCount; j++) {
-                    // Create a vertex for each component
-                    Object[] vertices = new Object[component.length];
-                    //vertices = grafo.insertVertex(parent, null, 20, 20, 80, 30);
+                    // Crear un vértice para cada componente
+                    Object vertice = grafo.insertVertex(parent, null, Integer.toString(component[j]), 20, 20, 80, 30);
 
-                    // Set the vertex style to display the assigned color
-                    grafo.setCellStyles(mxConstants.STYLE_FILLCOLOR, colores[i], new Object[]{vertices});
+                    
+                    grafo.setCellStyles(mxConstants.STYLE_FILLCOLOR, colores[i], new Object[]{vertice});
                 }
             }
         } finally {
             grafo.getModel().endUpdate();
         }
+
+        // Crear el componente grafo y agregarlo al frame
+        mxGraphComponent graphComponent = new mxGraphComponent(grafo);
+        
     }
 
     private String[] generarColores(int n) {
         String[] colores = new String[n];
 
         for (int i = 0; i < n; i++) {
-            // Generate random colors in hexadecimal format
-            String color = String.format("#%06x", (int) (Math.random() * 0xFFFFFF));
+            // Crear colores aleatorios en forma hexadecimal
+            String color = "#" + Integer.toHexString((int) (Math.random() * 0xFFFFFF));
             colores[i] = color;
         }
 
         return colores;
     }
-
-
 }
+
+             
+
